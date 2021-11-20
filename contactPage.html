@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--
+    *   Project: Contact Book Example
+    *   Authors: Lewis Barber-Fleming, Josh McKie, Malcolm John Russell
+    -->
+
+
+
+<html lang="en">
+    <head> 
+        <link rel="stylesheet" type="text/css" href="demo.css">
+        <link rel="icon" href = "Logo.png"> 
+        <link rel="stylesheet" type ="text/css" href="star.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+       
+    </head>
+    <body onload="load()">
+        
+        <div id = "container"> 
+            
+            <div id = "page_head">
+                <img id = "logo" src = "Logo.png">
+                <h1 id ="title"> CONTACT MANAGER </h1>
+            </div>
+         
+            <div class="container" id="toggle" onclick="barChange(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+               
+            <div id = "content">
+                <div id="pageSettings">
+                    <p class ="rightMenuText">Page Settings</p>
+                    <div id ="cogwheel">
+                        <img id ="settingsIMG" src = "cogwheelsettings.png">
+                    </div>
+                </div>
+                <div id ="manageBlockList">
+                    <p class ="rightMenuText">Our Reveiws</p>
+                    <div id ="blockIMG">
+                        <img id ="block" src ="star.png">
+                    </div>
+                </div>
+                <div id ="aboutUs">
+                    <p class ="rightMenuText">About</p>
+                    <div id ="aboutIMG">
+                        <img id ="info" src ="informationIMG.png">
+                    </div>
+                </div>
+                <div id ="contactUs">
+                    <p class ="rightMenuText">Contact Us</p>
+                    <div id ="contactUsIMG">
+                        <img id ="contactus" src ="contactUS.png">
+                    </div>
+                </div>
+                <div id = "feedback">
+                    <p class ="rightMenuText">Give Feedback</p>
+                    <div id ="feedbackIMG">
+                        <img id ="feedbackPNG" src ="feedback.png">
+                    </div>
+                </div>
+                <img id ="botRightLogo" src ="Logo.png">
+                <p class = "groupMembers">This project has been produced by Malcolm Josh Russell, Lewis Barber-Fleming and Josh McKie. </p>
+                
+                
+                
+                
+            </div>
+            
+            <div id ="addContactScreen">
+                <div id ="closeBtn">
+                   <img id ="closeJPG" src = "close.png">
+                </div>
+                
+                
+                <form id = "createContactForm">
+                    <label for="fName">First Name</label>
+                    <input type = "text" id="fName" name ="firstName">
+                    
+                    <label for ="lName">Last Name</label>
+                    <input type ="text" id ="lName" name ="lastName">
+                    
+                    <label for ="eMail"> eMail Address</label>
+                    <input type ="email" id ="eMail" name ="emailAddress">
+                    
+                    <label for ="address">Address</label>
+                    <input type ="text" id ="address" name ="address">
+                    
+                    <input type="submit" value ="Submit">
+                
+                    
+                </form>
+            </div>
+            <div id = "addGroupScreen">
+                
+                <div id ="closeBtn2">
+                   <img id ="closeJPG2" src = "close.png">
+                </div>
+                
+                
+                <form id = "createGroupForm" onsubmit ="saveData()">
+                
+                    <label for ="gName"> Group Name</label>
+                    <input type = "text" id ="gName" name ="groupName">
+                    <label for ="cName"> Contact Name</label>
+                    <input type ="text" id ="cName" name ="contactName">
+                    <input type ="submit" value ="Submit">
+                    
+                    
+                    
+                    
+                
+                </form>
+            </div>
+            
+            <div class="arrow bounce">
+                    
+            </div>
+        
+             
+            
+            <div id ="friendsButton"><img id ="friendMenuBtn" src ="friendMenuIcon.png"></div>
+            
+           <!-- <div id ="friendsList">
+                <div id = "user">
+                    <div id ="profilePic"><p class = "test">profile pic</p></div>
+                    <div id ="userName"><p class = "test1">user name</p></div>
+                    <div id ="addFriend">
+                        
+                        <div id ="addGroup"><img id ="addG" src ="groupIMG.png"></div>
+                        <div id ="addFriendBtn"><img id = "addF" src ="addfriend.png"></div>
+                        
+                    </div>
+                </div>
+                <div id ="searchBar">
+                  <form>
+                      <input type ="search" id="search" name ="search" placeholder ="Sort Contacts..">
+                  </form>
+                 
+                </div>
+                <div id ="searchResults"></div>
+                <div class ="ContactList" id ="contactsList">
+                    <button onClick ="showContacts(), moveList()" class ="ContactDrpDn">Contact List</button>
+                    <div id = "contacts" class ="contact-content">
+                        <div class = "contact" ></div>
+                    </div>
+                </div>
+                <div class ="groupList" id="GroupL">
+                    <button onClick ="showGroup()" class ="GroupDrpDn">Group List</button>
+                    <div id = "groups" class ="group-content">
+                        
+                    </div>
+                </div>
+             -->
+
+            <div id = "friendsList"> 
+                <div id = "user">
+                    
+                    <div id ="profilePic"><img id ="profile_pic" src ="userPlaceholder.png"></div>
+                    <div id ="userName"><p class = "test1"></p></div>
+                        <div id ="addFriend">
+                            <button id ="addGroup"  onclick = "showGroupFrom(), cancelContactForm()"><img id ="addG" src ="groupIMG.png"></button>
+                            <button id ="addFriendBtn" onclick="showContactForm(), cancelGroupFrom()"><img id = "addF" src ="addfriend.png"></button>
+                        </div>
+                </div>
+                <div id ="searchBar">
+                  <form>
+                      <input type ="search" id="search" name ="search" placeholder ="Sort Contacts..">
+                  </form>
+                 
+                </div>
+                <div id = "contactForm" class = "contactForm">
+                        <div class = "contactUsernameContainer">
+                            <div class = "contactUsernameTitle"><span class ="contactUsernameTitle2">Username</span></div>
+                            <input id = "contactUsername" class = "contactUsername" type= text placeholder = "Enter Username...">
+                        </div>
+                        <div class = "contactFormButtonContainer">
+                            <input class = "contactSumbit" type = button onclick="sumbitContactInfo()" value = "Submit">
+                            <input class = "contactCancel" type = button onclick = "cancelContactForm()" value = "Cancel">
+                        </div>
+                </div>
+                 <div id = "groupForm">
+                    <div id = "groupNameContainer">
+                        <div id = "groupName"><span id ="groupName2">Group Name</span></div>
+                        <input type = "text" id ="groupNameInput" placeholder = "Enter Group Name..">
+                    </div>
+                    <div id = "groupFromButtonContainer">
+                        <input type = "button" id = "submitGroupForm" onclick = "showGroupList(),submitGroupForm()" value = "submit">
+                        <input type = "button" id = "cancelGroupFrom" onclick = "cancelGroupFrom()" value = "cancel">
+                    </div>  
+                </div>
+
+               <button id = "contactListHeader" onclick="showContactList()">Contact List</button>
+                <div id = "contactList">
+                    
+                </div>
+                <input id = "showGroupList" type ="button" value = "Group List" onclick = "showGroupList()">
+                <div id = "groupList">
+                    <div class = "contactForm" id = "addGroupContactForm">
+                        <div class = "contactUsernameContainer">
+                            <div class = "contactUsernameTitle"><span class ="contactUsernameTitle2">Username</span></div>
+                            <input id = "submitGroupContact" class = "contactUsername" type= text placeholder = "Enter Username...">
+                        </div>
+                        <div class = "contactFormButtonContainer">
+                            <input id = "groupContactSumbit" class = "contactSumbit" type = button onclick="sumbitGroupContact(this.name)" value = "Submit">
+                            <input id = "groupContactCancel" class = "contactCancel" type = button onclick = "cancelGroupContactForm()" value = "Cancel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id = "centerContainer">
+                <div id = "editInfoPageContainer">
+                    <div id = "editInfoTitle">
+                        <div id = "basicInfoTitleName"></div>
+                        <input id = "submitInfo" type = "button" onclick="sumbitInfo(this.name)" value = "submit">
+                        <!--<input id = "submitBasic"-->
+                    </div>
+                    <div id = "editbasicInfoContainer">
+                        <div class = "basicInfoShell">
+                            <div class = "shellTitle">Full Name</div>
+                            <input id = "contactFirstName" type = "text" placeholder = "first name...">
+                            <input id = "contactLastName" type = "text" placeholder = "last name...">
+                            <input id = "fullnameButton" type = "button" value="Submit" onclick="checkName(this.name)">
+                        </div>
+                        <div class = "basicInfoShell">
+                            <div class = "shellTitle">Gender</div>
+                            <select id = "genderSelector">
+                                <option>Male</option>
+                                <option>female</option>
+                                <option>other</option?>
+                            </select>
+                            <input id = "genderButton" type = "button" value="Submit" onclick="checkGender(this.name)">
+                        </div>    
+                        <div class = "basicInfoShell"> 
+                            <div class = "shellTitle">Date of Birth</div>
+                            <select id = "MonthSelector">
+                                <option>Month</option>
+                                <option>January</option>
+                                <option>February</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                                <option>December</option>
+                            </select>
+                            <input id = "dayInput" type = "text" placeholder="Day">
+                            <input id = "yearInput" type="text" placeholder="Year">
+                            <input id = "dobButton" type = "button" value="Submit" onclick = "checkDate(this.name)">
+                        </div>
+                        <div class = "basicInfoShell">
+                            <div class = "shellTitle">Note</div>
+                            <textarea maxlength="300" id = "contactNote" placeholder ="Enter note here:"></textarea>
+                            <input id = "noteButton" type = "button" value="Submit" onclick = "checkNote(this.name)">
+                        </div> 
+                        <div class = "basicInfoShell">
+                            <div class = "shellTitle">Address</div>
+                            <select id = "addressSelector">
+                                <option>Address 1</option>
+                                <option>Address 2</option>
+                                <option>Address 3</option>
+                                <option>Address 4</option>
+                                <option>Address 5</option>
+                                <option>Address 6</option>
+                                <option>Address 7</option>
+                                <option>Address 8</option>
+                                <option>Address 9</option>
+                                <option>Address 10</option>
+                            </select>
+                            <input type = "text" id = "houseNumberInput" placeholder="House Number">
+                            <input type = "text" id = "streetNameInput"  placeHolder = "Street Name">
+                            <input type = "text" id = "townNameInput"    placeHolder = "Town/City Name">
+                            <input type = "text" id = "countryNameInput" placeholder= "Country Name">
+                            <input type = "text" id = "postcode"         placeholder = "Postcode">
+                            <input type = "button" id = "addressButton" value = "Submit" onclick = "checkAddress(this.name)">
+                        </div> 
+                        <div class = "basicInfoShell">
+                            <div class = "shellTitle">Email Address</div>
+                            <select id = "emailSelector">
+                                <option>email 1</option>
+                                <option>email 2</option>
+                                <option>email 3</option>
+                                <option>email 4</option>
+                                <option>email 5</option>
+                                <option>email 6</option>
+                                <option>email 7</option>
+                                <option>email 8</option>
+                                <option>email 9</option>
+                                <option>email 10</option>
+                            </select>
+                            <input type = "text" id = "emailInput" placeholder = "someone123@email.com">
+                            <input type = "button" id = "emailButton" value = "Submit" onclick = "checkEmail(this.name)">
+                        </div> 
+                        <div class = "basicInfoShell">
+                            <div class = "shellTitle">Phone Number</div>
+                            <select id = "phoneNoSelector">
+                                <option>PhoneNo 1</option>
+                                <option>PhoneNo 2</option>
+                                <option>PhoneNo 3</option>
+                                <option>PhoneNo 4</option>
+                                <option>PhoneNo 5</option>
+                                <option>PhoneNo 6</option>
+                                <option>PhoneNo 7</option>
+                                <option>PhoneNo 8</option>
+                                <option>PhoneNo 9</option>
+                                <option>PhoneNo 10</option>
+                            </select>
+                            <input type = "text" id = "phoneNoInput" placeholder = "08001234567">
+                            <input type = "button" id = "phoneNoButton" value = "Submit" onclick = "checkPhoneNo(this.name)">
+                        </div> 
+                    </div>
+                </div>
+            </div>
+                
+            </div>
+            <div id = "userSettings"> 
+                <div id ="closeBtn3">
+                   <img id ="closeJPG3" src = "close.png">
+                </div>
+            </div>
+            
+            <div id =  "About">
+                <h1 id = "aboutHead">About Our Website</h1>
+                <p id = "aboutPara"> We created this website with the intention of allowing a user to add and manage contacts and groups of contacts. We created this website without the use of any frameworks, using pure css, javascript and jquery. Users can create contacts, input the contacts' email address, address, phone number(s), name, gender, date of birth etc. These contacts can also be inserted into named groups so that the user can manage the contacts with a bit more ease. Our website also allows for users to create and leave reviews, change their user and passwords, and view contact info for each member of our team.   </p>
+                <div id ="closeBtn4">
+                   <img id ="closeJPG4" src = "close.png">
+                </div>
+            </div>
+            
+            
+            
+            <div id = "giveFeedback">
+                <form id="ratingForm" onchange="numberForm()">
+                    <fieldset>
+                        <span class="star-cb-group">
+                            <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+                            <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
+                            <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+                            <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+                            <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+                            <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+                        </span>
+                    </fieldset>
+                </form>
+                
+                
+            <div id = "formDiv">    
+            <form id="enquiry" onsubmit="return false">
+                <textarea maxlength="140" name="message" id="message" placeholder="Add your comment!"></textarea>
+                <input type="submit" value="Add Comment">
+            </form>
+            </div>    
+                <div id ="closeBtn5">
+                   <img id ="closeJPG5" src = "close.png">
+                </div>
+            </div>
+            
+            <div id="reviewList">
+                 <div id ="closeBtn7">
+                   <img id ="closeJPG7" src = "close.png">
+                 </div>
+                <h1 id ="reviewH"> Our Reviews!</h1>
+           
+            <div id="reviewContainer">
+                
+            </div>   
+                
+            </div>
+            
+            <div id ="contactUsDiv">
+                
+                <h1 id ="contactHead">Contact Us</h1>
+                <h2 id ="contactInfo"> How to Contact:</h2>
+                <ol id ="memberContact">
+                    <li>Malcolm John Russell</li>
+                        <ul>
+                            <li>University Email:</li>
+                            <li>Personal Email: mjruss18@gmail.com</li>
+                        </ul>
+                    <li>Lewis Barber-Fleming</li>
+                        <ul>
+                            <li>University Email:</li>
+                            <li>Personal Email: lewis.lbf@gmail.com</li>
+                        </ul>
+                    <li>Josh McKie</li>
+                        <ul>
+                            <li>University Email:B00288826@studentmail.uws.ac.uk></li>
+                            <li>Personal Email: joshmckie1234@gmail.com</li>
+                        </ul>
+                </ol>
+                <div id ="closeBtn6">
+                   <img id ="closeJPG6" src = "close.png">
+                </div>
+                <p id ="contactAnyTime">Feel free to contact us at any time with any queries you may have. If you wish to write to us please send any mail to - Dumfries Campus Dudgeon House, Bankend Rd, Dumfries DG1 4ZN</p>
+            </div>
+            
+            
+            
+            <div class ="slideshow">
+            <div class ="move-1"></div>
+            <div class ="move-2"></div>
+            </div>    
+        
+            
+        </div>
+        
+        <div id ="container2">
+        
+        
+        
+        
+        </div>
+        
+        
+        <script>
+            function barChange(x)
+            {
+                x.classList.toggle("change");
+                
+            }
+            function showContacts(){
+            
+              document.getElementById("contacts").classList.toggle("show");
+              document.getElementById("")    
+                
+            }
+            function moveList(){
+                document.getElementById("GroupL").classList.toggle("moveL");
+            }
+            function showGroup(){
+                document.getElementById("groups").classList.toggle("show");
+            }
+            
+            function numberForm(){
+                
+                alert(document.querySelector('input[name="rating"]:checked').value);
+                
+            }
+        </script>
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="contact.js"></script>
+    </body>
+</html>

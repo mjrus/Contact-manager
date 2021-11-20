@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--
+    *   Project: Contact Book Example
+    *   Authors: Lewis Barber-Fleming, Josh McKie, Malcolm John Russell
+    -->
+
+
+
+<html lang="en">
+    <head> 
+        <link rel="stylesheet" type="text/css" href="login.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+       
+    </head>
+    <body onload="load()">
+        
+    <div id = "loginContainer">  
+        
+        <div class='login'>
+            <h2>Sign in</h2>
+            <input name='username' placeholder='Username' type='text' id="setAccID" />
+            <input id="setPassword" name='password' placeholder='Password' type='password' />
+            <div class='remember'>
+                <input checked='' id='remember' name='remember' type='checkbox' />
+                <label for='remember'></label>Remember me
+            </div>
+            <input type='submit' value='Sign in' onclick="login()" />
+  
+        </div>
+    </div>
+    
+    
+    
+
+
+
+
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="loginLogic.js"></script>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body onload="load()">
+<div id="loginContainer">
+    <div class="login">
+        <h2>Enter Login</h2>
+        <input id="setAccID" placeholder="Account ID" type="text">
+        <input id="setPassword" placeholder="Password" type="password">
+        <br><br>
+        <!--<button onclick="login()">Login</button>-->
+        <input type='submit' value='Login' onclick="login()" />
+        <div class="remember"><a href="register.html"></a></div>
+        <input type='submit' value='Create Account' onclick="goToRegister()" />       
+    </div>
+</div>
+<script type="text/javascript" src="loginLogic.js"></script>
+</body>
+</html>
+

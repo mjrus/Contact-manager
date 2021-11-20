@@ -1,0 +1,21 @@
+name abc123 accid bob
+
+name xyz456 accid joe
+
+
+
+
+
+window.setTimeout('checkIfContinue()', 10*60*1000);  //10 minutes
+
+    function checkIfContinue()
+    {
+        if(confirm("Do you want to continue?"))
+        {
+            window.setTimeout('checkIfContinue()', 10*60*1000);  //start the timer again
+        }
+        else
+        {
+            window.location = 'timeout.html';
+        }
+    }

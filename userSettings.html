@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body onload="load()">
+<div id="loginContainer">
+    <div class="login">
+        <h2>Old Account Information</h2>
+        <input id="setAccID" placeholder="Old Account ID" type="text">
+        <input id="setPassword" placeholder="Old Password" type="password">
+        <h2>New Account Information</h2>
+        <input id="newAccID" placeholder="New Account ID" type="text">
+        <input id="newPass" placeholder="New Password" type="password">
+        <br><br>
+        <!--<button onclick="changeName()">Change Details</button>-->
+        <input type='submit' value='Change Details' onclick="changeName()" />
+    </div>
+</div>
+<script type="text/javascript" src="loginLogic.js"></script>
+</body>
+</html>
